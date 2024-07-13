@@ -16,12 +16,12 @@ object Routes:
     messageType match {
 
       case "LoginMessage" =>
-        IO(decode[LoginMessagePlanner](str).getOrElse(throw new Exception("Invalid JSON for SuperuserLoginMessage")))
+        IO(decode[LoginMessagePlanner](str).getOrElse(throw new Exception("Invalid JSON for LoginMessage")))
           .flatMap{m=>
             m.fullPlan.map(_.asJson.toString)
           }
       case "RegisterMessage" =>
-        IO(decode[RegisterMessagePlanner](str).getOrElse(throw new Exception("Invalid JSON for AuthenManagerMessage")))
+        IO(decode[RegisterMessagePlanner](str).getOrElse(throw new Exception("Invalid JSON for RegisterMessage")))
           .flatMap{m=>
             m.fullPlan.map(_.asJson.toString)
           }
