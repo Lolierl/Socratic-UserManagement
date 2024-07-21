@@ -26,7 +26,7 @@ object Init {
       )
       _ <- if (!existingUsers) {
         writeDB(
-          s"INSERT INTO ${schemaName}.users (user_name, password, usertype) VALUES (?, ?, ?)",
+          s"INSERT INTO ${schemaName}.users (user_name, password_hash, salt, usertype) VALUES (?, ?, ?, ?)",
           List(
             SqlParameter("String", "Dragon"),
             SqlParameter("String", defaultPassword),
